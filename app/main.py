@@ -9,7 +9,7 @@ from time import sleep
 log = get_logger(__name__)
 
 def main():
-    # loading_screen(0.5)
+    loading_screen(0.5)
     while True:
         main_menu()
         try:    
