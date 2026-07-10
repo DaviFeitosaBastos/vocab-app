@@ -1,37 +1,39 @@
-import json
 from rich import print
-import random
-import os
+from rich.prompt import Prompt
+from ui import main_menu, loading_screen, clear, return_option
+import logging
+from log_utils import get_logger
 
-app_dir = os.path.dirname(os.path.abspath(__file__))
+from time import sleep
 
-def load_progress(relative_path):
-    try:
-        absolute_path = os.path.join(app_dir, relative_path)
-        with open(absolute_path, "r", encoding="utf-8") as file:
-            return json.load(file)
-    except FileNotFoundError as e:
-        with open("progress.json", "w", encoding="utf-8") as file:
-            json.dump({"seen": []}, file, indent=4)
-        return {"seen": []}
+log = get_logger(__name__)
 
-def load_dictionary(relative_path):
-    absolute_path = os.path.join(app_dir, relative_path)
-    with open(absolute_path, "r", encoding="utf-8") as file:
-        return json.load(file)
+def main():
+    # loading_screen(0.5)
+    while True:
+        main_menu()
+        try:    
+            choose = int(Prompt.ask("[bold blue]Choose here"))
+            match choose:
+                case 1:
+                    ...
+                case 2:
+                    ...
+                case 3:
+                    ...
+                case 0:
+                    ...
+                case _:
+                    print("[red] Invalid option!")
+                    sleep(0.9)
+                    continue
 
+        except ValueError as e:
+            log.error(f"Error {e} | Try a valid options instead!")
+            sleep(1)
+
+        
+
+if __name__ == "__main__":
+    main()
     
-load_files = load_progress("progress.json")
-load_dict = load_dictionary("../data/processed/dictionary.json")
-
-unseen = [word for word in load_dict if word["Id"] not in load_files["seen"]]
-sort_word = random.sample(unseen, 1)
-
-
-if load_files:
-    print(f"[green]Loaded progress.json[/] -> total length [{len(load_files)} words][green]✔[/]")
-    print(f"[green]Loaded dictionary.json[/] -> total length [{len(load_dict)} words][green]✔[/]")
-    print(f"[green]Loaded unseen[/] -> total length [{len(unseen)} words][green]✔[/]")
-    print(f"{sort_word}")
-else:
-    print("Empty")
