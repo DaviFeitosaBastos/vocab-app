@@ -9,7 +9,7 @@ from time import sleep
 log = get_logger(__name__)
 
 def main():
-    loading_screen(0.5)
+    loading_screen(0.1)
     while True:
         main_menu()
         try:    
@@ -22,7 +22,10 @@ def main():
                 case 3:
                     ...
                 case 0:
-                    ...
+                    print(f"[red]Exitting...")
+                    sleep(0.6)
+                    clear()
+                    exit()
                 case _:
                     print("[red] Invalid option!")
                     sleep(0.9)
