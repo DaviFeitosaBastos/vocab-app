@@ -45,7 +45,7 @@ def save_progress(already_seen: list, relative_path: str):
     data = {
         "Id": already_seen[0],
         "Word": already_seen[1],
-        "SYNONYMS": already_seen[2],
+        "Meaning": already_seen[2],
     }
     
     load_files["Seen"].append(data)
@@ -59,6 +59,6 @@ def save_progress(already_seen: list, relative_path: str):
 if __name__=="__main__":   
     if load_files:
         print(f"[green]Loaded progress.json[/] -> total length [{len(load_files)} words][green]✔[/]")
-        print(f"[green]Loaded dictionary.json[/] -> total length [{len(load_dict)} words][green]✔[/]")
+        print(f"[green]Loaded dictionary.json[/] -> total length [{len(load_dict)} words][green]✔[/]")       
     else:
         print("Empty")
