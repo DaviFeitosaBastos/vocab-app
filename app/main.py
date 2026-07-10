@@ -63,8 +63,6 @@ def main():
             log.error(f"Error {e} | Try a valid options instead!")
             sleep(1)
 
-        
-
 if __name__ == "__main__":
     main()
     
