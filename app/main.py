@@ -38,7 +38,12 @@ def main():
                     result = search_word(load_dict, word)
                     if result:
                         clear()
-                        print(Panel(f"[bold cyan]{result['Word']}[/]\n"f"[italic]{result['Meanings'][0]}[/] — {result['Meanings'][1]}", title="[cyan]Word", style="cyan"))
+                        print(Panel(
+                            f"[bold cyan]{result['Word']}[/]\n"
+                            f"[italic]{result['Meanings'][0]}[/] — {result['Meanings'][1]}\n\n"
+                            f"[dim]Synonyms: {', '.join(result['Synonyms'])}[/]",
+                            title="[cyan]Word", style="cyan"
+                        ))
                         Prompt.ask("[bold blue]Press enter to return to menu")
                     else:
                         clear()
