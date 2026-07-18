@@ -5,6 +5,7 @@ from rich.progress import track
 from rich.panel import Panel
 import platform
 from rich.prompt import Prompt
+from rich.table import Table
 
 def clear():
     os.system("clear") if not platform.system() == "windows" else "cls"
@@ -38,6 +39,11 @@ def search_menu():
     clear()
     print(Panel("[bold blue]Type what word would you like to see?[/]", title="[cyan]Searching menu", subtitle="[cyan]↓ Word ↓", style="cyan"))
 
+def build_progress_table(sequence: dict, dict_: dict) -> Table:
+    table = Table(show_header=False, box=None, padding=(0, 1))
+    for k, v in sequence.items(): 
+        table.add_row(f"[bold cyan]{k}.[/]", str(v))
+    return table
     
 # loading_screen(0.2)
 # main_menu()
