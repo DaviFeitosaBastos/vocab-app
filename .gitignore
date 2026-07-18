@@ -1,4 +1,6 @@
 venv/
 .roadmap.md
 __pycache__
+*.pyc
 app.log
+app/*.json
