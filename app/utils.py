@@ -44,13 +44,11 @@ def save_progress(already_seen, load_files, relative_path):
     with open(absolute_path, "w", encoding="utf-8") as f:
         json.dump(load_files, f, indent=4)
 
-def search_word(load_dict: dict, term: str):
+def search_word(load_dict: dict, term: str | int):  
     for index in load_dict:
-        if index["Word"] == term:
+        if index["Word"] == term or str(index['Id']) == term:
             return index
-
-
-
+    return None
 
 if __name__ == "__main__":
     load_files = load_progress("progress.json")
