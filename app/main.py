@@ -5,6 +5,7 @@ from ui import main_menu, loading_screen, clear, return_option, search_menu
 from utils import search_word, load_dictionary, load_progress, get_daily_word, save_progress, get_unseen, mark_as_seen
 from log_utils import get_logger
 from time import sleep
+from ui import build_progress_table
 
 log = get_logger(__name__)
 
@@ -29,18 +30,20 @@ def main():
 
                 case 2:
                     clear()
-                    print(Panel(f"", title="[cyan]★ Progress ★", style="cyan"))
-                    Prompt.ask("")
-
+                    sequence = {(x + 1): y for x, y in enumerate(load_files['Seen'])}
+                    table = build_progress_table(sequence, load_dict)
+                    print(Panel(table, title="[cyan]★ Progress ★", style="cyan"))
+                    Prompt.ask("[bold blue]Press enter to return")
                 case 3:
                     search_menu()
-                    word = Prompt.ask(f"[bold blue]Type the word").lower()
+                    word = Prompt.ask(f"[bold blue]Type the word or ID").lower()
                     result = search_word(load_dict, word)
                     if result:
                         clear()
                         print(Panel(
-                            f"[bold cyan]{result['Word']}[/]\n"
-                            f"[italic]{result['Meanings'][0]}[/] — {result['Meanings'][1]}\n\n"
+                            f"[bold cyan]Id: {result['Id']}[/]\n"
+                            f"[bold cyan]Word: {result['Word'].capitalize()}[/]\n"
+                            f"[bold cyan]Meanings: [/][italic]{result['Meanings'][0]}[/] — {result['Meanings'][1]}\n\n"
                             f"[dim]Synonyms: {', '.join(result['Synonyms'])}[/]",
                             title="[cyan]Word", style="cyan"
                         ))
@@ -49,7 +52,6 @@ def main():
                         clear()
                         print(Panel(f"[cyan]The word [red]|{word}|[/] was not found[/]", title="[red]Word not found!",style="red"))
                         Prompt.ask("[bold blue]Press enter to return to menu")
-
                 case 4:
                     ...
 
