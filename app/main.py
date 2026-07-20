@@ -52,9 +52,7 @@ def main():
                         clear()
                         print(Panel(f"[cyan]The word [red]|{word}|[/] was not found[/]", title="[red]Word not found!",style="red"))
                         Prompt.ask("[bold blue]Press enter to return to menu")
-                case 4:
-                    ...
-
+                        
                 case 0:
                     print(f"[red]Exitting...")
                     sleep(0.6)
@@ -69,6 +67,8 @@ def main():
         except ValueError as e:
             log.error(f"Error {e} | Try a valid options instead!")
             sleep(1)
+        except KeyboardInterrupt:
+            print(f"[bold blue]Ok bye!!")
 
 if __name__ == "__main__":
     main()
