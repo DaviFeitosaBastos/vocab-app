@@ -27,7 +27,6 @@ def main_menu():
     "[bold blue]1[/] - Get a random word\n"
     "[bold blue]2[/] - Show all progress\n" \
     "[bold blue]3[/] - Search a Word\n"
-    "[bold blue]4[/] - Add a new word in the dictionary\n"
     "[red]0 - Exit", title="[cyan]Vocabulary app", subtitle="[cyan]Enjoy", style="cyan"))
 
 def return_option():
