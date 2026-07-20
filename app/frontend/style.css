@@ -1,0 +1,310 @@
+/* --- Variáveis de Cor (Paleta Azul/Ciano Profissional) --- */
+:root {
+    --bg-deep: #021024;       /* Azul muito escuro (quase preto) */
+    --bg-mid: #053d6e;        /* Azul marinho rico */
+    --accent-cyan: #00d2ff;   /* Ciano vibrante */
+    --accent-blue: #3a7bd5;   /* Azul royal */
+    --glass-bg: rgba(255, 255, 255, 0.1); /* Vidro fosco */
+    --glass-border: rgba(255, 255, 255, 0.2);
+    --text-main: #ffffff;
+    --text-muted: #a0c4ff;
+    --card-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+}
+
+/* --- Reset & Base --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+}
+
+body {
+    background-color: var(--bg-deep);
+    color: var(--text-main);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* --- Fundo Animado (Gradient Flow) --- */
+.background-gradient {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, var(--bg-deep), var(--bg-mid), #004e92);
+    background-size: 400% 400%;
+    z-index: -1;
+    animation: gradientFlow 15s ease infinite;
+}
+
+@keyframes gradientFlow {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* --- Layout Principal (Dashboard) --- */
+.app-dashboard {
+    width: 90%;
+    max-width: 1000px;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+/* --- Cabeçalho --- */
+.app-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--accent-cyan);
+    text-shadow: 0 0 10px rgba(0, 210, 255, 0.4);
+}
+
+.user-status .streak {
+    background: rgba(255, 165, 0, 0.2);
+    color: #ffaa00;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    border: 1px solid rgba(255, 165, 0, 0.3);
+}
+
+/* --- Cards (Glassmorphism) --- */
+.card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
+    padding: 2rem;
+    box-shadow: var(--card-shadow);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 40px 0 rgba(0, 210, 255, 0.15);
+    border-color: rgba(0, 210, 255, 0.4);
+}
+
+/* --- Daily Word (Destaque) --- */
+.highlight-card {
+    text-align: center;
+    background: linear-gradient(135deg, rgba(0, 210, 255, 0.15), rgba(58, 123, 213, 0.1));
+    border-top: 1px solid rgba(0, 210, 255, 0.5);
+}
+
+.card-badge {
+    display: inline-block;
+    background: var(--accent-cyan);
+    color: var(--bg-deep);
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    letter-spacing: 1px;
+}
+
+#word-display {
+    font-size: 3rem;
+    font-weight: 800;
+    margin-bottom: 0.5rem;
+    background: linear-gradient(to right, #fff, #a0c4ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.phonetic {
+    color: var(--accent-cyan);
+    font-family: 'Courier New', monospace;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.definition {
+    color: var(--text-muted);
+    font-size: 1.1rem;
+    line-height: 1.6;
+    max-width: 600px;
+    margin: 0 auto 1.5rem auto;
+}
+
+.btn-audio {
+    background: transparent;
+    border: 1px solid var(--accent-cyan);
+    color: var(--accent-cyan);
+    padding: 10px 20px;
+    border-radius: 30px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.btn-audio:hover {
+    background: var(--accent-cyan);
+    color: var(--bg-deep);
+    box-shadow: 0 0 15px var(--accent-cyan);
+}
+
+/* --- Grid Layout (Search + Progress) --- */
+.grid-container {
+    display: grid;
+    grid-template-columns: 2fr 1fr; /* Search ocupa mais espaço */
+    gap: 1.5rem;
+}
+
+/* --- Search Section --- */
+.card h3 {
+    color: var(--text-main);
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.search-wrapper {
+    display: flex;
+    gap: 10px;
+}
+
+#search-input {
+    flex: 1;
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid var(--glass-border);
+    padding: 12px 15px;
+    border-radius: 10px;
+    color: #fff;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+#search-input:focus {
+    border-color: var(--accent-cyan);
+    background: rgba(0, 0, 0, 0.5);
+}
+
+#search-input::placeholder {
+    color: rgba(255, 255, 255, 0.4);
+}
+
+.btn-icon {
+    background: var(--accent-blue);
+    border: none;
+    width: 45px;
+    border-radius: 10px;
+    color: white;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.btn-icon:hover {
+    background: var(--accent-cyan);
+}
+
+/* --- Progress Section (Circular) --- */
+.progress-stats {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.circular-chart {
+    width: 80px;
+    height: 80px;
+    transform: rotate(-90deg);
+}
+
+.circle-bg {
+    fill: none;
+    stroke: rgba(255, 255, 255, 0.1);
+    stroke-width: 2.5;
+}
+
+.circle {
+    fill: none;
+    stroke: var(--accent-cyan);
+    stroke-width: 2.5;
+    stroke-linecap: round;
+    transition: stroke-dasharray 1s ease;
+    filter: drop-shadow(0 0 5px var(--accent-cyan));
+}
+
+.percent-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Ajuste fino necessário no HTML real ou absolute positioning */
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #fff;
+}
+/* Nota: Para o texto ficar no centro exato do SVG, o container .stat-circle precisa ser relative */
+.stat-circle {
+    position: relative;
+    width: 80px;
+    height: 80px;
+}
+.percent-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--accent-cyan);
+}
+
+.stat-details p {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+.stat-details strong {
+    color: #fff;
+    font-size: 1.2rem;
+}
+.sub-text {
+    font-size: 0.75rem !important;
+    opacity: 0.7;
+}
+
+/* --- Responsividade (Mobile) --- */
+@media (max-width: 768px) {
+    .grid-container {
+        grid-template-columns: 1fr; /* Empilha no celular */
+    }
+    
+    #word-display {
+        font-size: 2.2rem;
+    }
+    
+    .app-dashboard {
+        padding: 1rem;
+        width: 95%;
+    }
+}   

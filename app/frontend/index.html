@@ -1,11 +1,113 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Vocabulário App</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    
+
+    <div class="app-container">
+        
+        <!-- Seção 1: Daily Word -->
+        <div id="daily-word" class="section">
+            <h2>Daily Word</h2>
+            <p class="placeholder">Palavra do dia aparecerá aqui</p>
+        </div>
+
+        <!-- Seção 2: Search -->
+        <div id="search" class="section">
+            <h2>Search</h2>
+            <input type="text" placeholder="Digite uma palavra..." class="search-input">
+        </div>
+
+        <!-- Seção 3: Progress -<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fluent Vocab | App de Vocabulário</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Ícones (opcional, usando CDN para visual profissional) -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Fundo Animado -->
+    <div class="background-gradient"></div>
+
+    <main class="app-dashboard">
+        
+        <!-- Cabeçalho -->
+        <header class="app-header">
+            <div class="logo">
+                <i class="fa-solid fa-graduation-cap"></i>
+                <h1>Fluent Vocab</h1>
+            </div>
+            <div class="user-status">
+                <span class="streak"><i class="fa-solid fa-fire"></i> 12 dias</span>
+            </div>
+        </header>
+
+        <!-- Seção 1: Daily Word (Destaque Principal) -->
+        <section id="daily-word" class="card highlight-card">
+            <div class="card-badge">Palavra do Dia</div>
+            <h2 id="word-display">Serendipity</h2>
+            <p id="phonetic-display" class="phonetic">/ˌser.ənˈdɪp.ə.t̬i/</p>
+            <p id="definition-display" class="definition">
+                A ocorrência de eventos por acaso de maneira feliz e benéfica.
+            </p>
+            <button class="btn-audio"><i class="fa-solid fa-volume-high"></i> Ouvir Pronúncia</button>
+        </section>
+
+        <!-- Grid para Search e Progress -->
+        <div class="grid-container">
+            
+            <!-- Seção 2: Search -->
+            <section id="search" class="card">
+                <h3><i class="fa-solid fa-magnifying-glass"></i> Buscar</h3>
+                <div class="search-wrapper">
+                    <input type="text" id="search-input" placeholder="Digite um termo em inglês...">
+                    <button id="search-btn" class="btn-icon"><i class="fa-solid fa-arrow-right"></i></button>
+                </div>
+                <div id="search-result" class="search-result-area"></div>
+            </section>
+
+            <!-- Seção 3: Progress -->
+            <section id="progress" class="card">
+                <h3><i class="fa-solid fa-chart-line"></i> Seu Progresso</h3>
+                <div class="progress-stats">
+                    <div class="stat-circle">
+                        <svg viewBox="0 0 36 36" class="circular-chart">
+                            <path class="circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                            <path class="circle" stroke-dasharray="0, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                        </svg>
+                        <span id="progress-percent" class="percent-text">0%</span>
+                    </div>
+                    <div class="stat-details">
+                        <p><strong id="words-learned">0</strong> palavras</p>
+                        <p class="sub-text">Meta diária: 5</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+    </main>
+
+    <script src="script.js"></script>
 </body>
-</html>
+</html>   ->
+        <div id="progress" class="section">
+            <h2>Progress</h2>
+            <div class="progress-bar">
+                <div class="progress-fill" style="width: 0%;"></div>
+            </div>
+            <p class="progress-text">0 palavras aprendidas</p>
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>   
