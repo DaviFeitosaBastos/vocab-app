@@ -28,45 +28,7 @@ def get_unseen(load_dict, load_files):
     return [word for word in load_dict if word["Id"] not in ids_seen]
 
 
-def get_daily_word(unseen):
-    if unseen:
-        return random.sample(unseen, 1)
-    return []
-
-
-def mark_as_seen(sort_word):
-    return [sort_word[0]["Id"]]
-
-
-def save_progress(already_seen, load_files, relative_path):
+def save_progress(load_files, relative_path):
     absolute_path = os.path.join(app_dir, relative_path)
-    load_files["Seen"].append(already_seen[0])
     with open(absolute_path, "w", encoding="utf-8") as f:
         json.dump(load_files, f, indent=4)
-
-
-def search_word(load_dict: dict, term: str | int):
-    for index in load_dict:
-        if index["Word"] == term or str(index["Id"]) == term:
-            return index
-    return None
-
-
-if __name__ == "__main__":
-    load_files = load_progress("progress.json")
-    load_dict = load_dictionary("../data/processed/dictionary.json")
-
-    print(
-        f"[green]Loaded progress.json[/] -> [{len(load_files['Seen'])} seen][green]✔[/]"
-    )
-    print(f"[green]Loaded dictionary.json[/] -> [{len(load_dict)} words][green]✔[/]")
-
-    unseen = get_unseen(load_dict, load_files)
-    sort_word = get_daily_word(unseen)
-
-    if sort_word:
-        print(f"\nWord: [bold]{sort_word[0]['Word']}[/]")
-        print(f"Meaning: {sort_word[0]['Meanings'][1]}")
-        save_progress(mark_as_seen(sort_word), load_files, "progress.json")
-    else:
-        print("[yellow]No more words to learn![/]")
