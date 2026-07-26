@@ -1,113 +1,96 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vocabulário App</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vocab App</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="app">
+      <!-- Header -->
+      <header class="header">
+        <span class="header__logo">vocab</span>
+        <nav class="header__nav">
+          <button class="nav-btn active" data-screen="daily">Daily</button>
+          <button class="nav-btn" data-screen="search">Search</button>
+          <button class="nav-btn" data-screen="progress">Progress</button>
+        </nav>
+      </header>
 
-    <div class="app-container">
-        
-        <!-- Seção 1: Daily Word -->
-        <div id="daily-word" class="section">
-            <h2>Daily Word</h2>
-            <p class="placeholder">Palavra do dia aparecerá aqui</p>
+      <!-- Screen: Daily Word -->
+      <section id="screen-daily" class="screen active">
+        <div class="daily__meta">Word of the day</div>
+        <h1 class="daily__word" id="daily-word">serendipity</h1>
+        <p class="daily__pos" id="daily-pos">Noun</p>
+        <p class="daily__definition" id="daily-definition">
+          The occurrence of events by chance in a happy or beneficial way.
+        </p>
+        <div class="daily__synonyms" id="daily-synonyms">
+          <span class="tag">luck</span>
+          <span class="tag">chance</span>
+          <span class="tag">fortune</span>
         </div>
+        <button class="btn" id="btn-next">Next word →</button>
+      </section>
 
-        <!-- Seção 2: Search -->
-        <div id="search" class="section">
-            <h2>Search</h2>
-            <input type="text" placeholder="Digite uma palavra..." class="search-input">
+      <!-- Screen: Search -->
+      <section id="screen-search" class="screen">
+        <h2 class="screen__title">Search</h2>
+        <div class="search__bar">
+          <input
+            type="text"
+            id="search-input"
+            class="search__input"
+            placeholder="Type a word..."
+            autocomplete="off"
+          />
+          <button class="btn" id="btn-search">Search</button>
         </div>
-
-        <!-- Seção 3: Progress -<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fluent Vocab | App de Vocabulário</title>
-    <link rel="stylesheet" href="style.css">
-    <!-- Ícones (opcional, usando CDN para visual profissional) -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-</head>
-<body>
-
-    <!-- Fundo Animado -->
-    <div class="background-gradient"></div>
-
-    <main class="app-dashboard">
-        
-        <!-- Cabeçalho -->
-        <header class="app-header">
-            <div class="logo">
-                <i class="fa-solid fa-graduation-cap"></i>
-                <h1>Fluent Vocab</h1>
-            </div>
-            <div class="user-status">
-                <span class="streak"><i class="fa-solid fa-fire"></i> 12 dias</span>
-            </div>
-        </header>
-
-        <!-- Seção 1: Daily Word (Destaque Principal) -->
-        <section id="daily-word" class="card highlight-card">
-            <div class="card-badge">Palavra do Dia</div>
-            <h2 id="word-display">Serendipity</h2>
-            <p id="phonetic-display" class="phonetic">/ˌser.ənˈdɪp.ə.t̬i/</p>
-            <p id="definition-display" class="definition">
-                A ocorrência de eventos por acaso de maneira feliz e benéfica.
-            </p>
-            <button class="btn-audio"><i class="fa-solid fa-volume-high"></i> Ouvir Pronúncia</button>
-        </section>
-
-        <!-- Grid para Search e Progress -->
-        <div class="grid-container">
-            
-            <!-- Seção 2: Search -->
-            <section id="search" class="card">
-                <h3><i class="fa-solid fa-magnifying-glass"></i> Buscar</h3>
-                <div class="search-wrapper">
-                    <input type="text" id="search-input" placeholder="Digite um termo em inglês...">
-                    <button id="search-btn" class="btn-icon"><i class="fa-solid fa-arrow-right"></i></button>
-                </div>
-                <div id="search-result" class="search-result-area"></div>
-            </section>
-
-            <!-- Seção 3: Progress -->
-            <section id="progress" class="card">
-                <h3><i class="fa-solid fa-chart-line"></i> Seu Progresso</h3>
-                <div class="progress-stats">
-                    <div class="stat-circle">
-                        <svg viewBox="0 0 36 36" class="circular-chart">
-                            <path class="circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
-                            <path class="circle" stroke-dasharray="0, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
-                        </svg>
-                        <span id="progress-percent" class="percent-text">0%</span>
-                    </div>
-                    <div class="stat-details">
-                        <p><strong id="words-learned">0</strong> palavras</p>
-                        <p class="sub-text">Meta diária: 5</p>
-                    </div>
-                </div>
-            </section>
+        <div id="search-result" class="search__result hidden">
+          <p class="result__word" id="result-word"></p>
+          <p class="result__pos" id="result-pos"></p>
+          <p class="result__definition" id="result-definition"></p>
+          <div class="result__synonyms" id="result-synonyms"></div>
         </div>
-
-    </main>
-
-    <script src="script.js"></script>
-</body>
-</html>   ->
-        <div id="progress" class="section">
-            <h2>Progress</h2>
-            <div class="progress-bar">
-                <div class="progress-fill" style="width: 0%;"></div>
-            </div>
-            <p class="progress-text">0 palavras aprendidas</p>
+        <div id="search-empty" class="search__empty hidden">
+          Word not found.
         </div>
+      </section>
 
+      <!-- Screen: Progress -->
+      <section id="screen-progress" class="screen">
+        <h2 class="screen__title">Progress</h2>
+        <div class="progress__stats">
+          <div class="stat">
+            <span class="stat__number" id="stat-seen">0</span>
+            <span class="stat__label">words seen</span>
+          </div>
+          <div class="stat__divider"></div>
+          <div class="stat">
+            <span class="stat__number" id="stat-remaining">0</span>
+            <span class="stat__label">remaining</span>
+          </div>
+          <div class="stat__divider"></div>
+          <div class="stat">
+            <span class="stat__number" id="stat-percent">0%</span>
+            <span class="stat__label">complete</span>
+          </div>
+        </div>
+        <div class="progress__bar-wrapper">
+          <div class="progress__bar" id="progress-bar"></div>
+        </div>
+        <div class="progress__list" id="progress-list">
+          <!-- seen words render here -->
+        </div>
+      </section>
     </div>
 
     <script src="script.js"></script>
-</body>
-</html>   
+  </body>
+</html>
