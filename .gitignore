@@ -4,4 +4,4 @@ __pycache__
 *.pyc
 app.log
 app/*.json
-.ruff_cache
+.ruff_cache/
